@@ -20,7 +20,8 @@
                 @endif
 
                 @component('sistema.exemplo.form', [
-                    'exemplo' => isset($exemplo)? $exemplo: null
+                    'exemplo' => isset($exemplo)? $exemplo: null,
+                    'categorias' => $categorias
                 ])
                 @endcomponent
                 <div class="pt-3 d-flex justify-content-end flex-wrap-reverse">

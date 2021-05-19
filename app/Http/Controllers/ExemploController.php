@@ -7,6 +7,7 @@ use App\Http\Requests\ExemploRequest;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Exemplo;
+use App\Models\CategoriaExemplo;
 
 class ExemploController extends Controller
 {
@@ -19,13 +20,14 @@ class ExemploController extends Controller
 
     public function create()
     {
-        return view('sistema.exemplo.crud');
+        $categorias = CategoriaExemplo::all();
+
+        return view('sistema.exemplo.crud', compact('categorias'));
     }
 
     public function store(ExemploRequest $request)
     {
         $data = $request->all();
-
         $data['imagem'] = $request->file('imagem')->store('exemplo','public');
         $exemplo = Exemplo::create($data);
         
@@ -35,6 +37,7 @@ class ExemploController extends Controller
     public function show($id)
     {
         $exemplo = Exemplo::withTrashed()->find($id);
+        $exemplo->data = date('d/m/Y H:i:s', strtotime($exemplo->data));
         $exemplo->categoria;
 
         return json_encode($exemplo);
@@ -43,8 +46,9 @@ class ExemploController extends Controller
     public function edit($id)
     {
         $exemplo = Exemplo::find($id);
+        $categorias = CategoriaExemplo::all();
 
-        return view('sistema.exemplo.crud', compact('exemplo'));
+        return view('sistema.exemplo.crud', compact('exemplo', 'categorias'));
     }
 
     public function update(Request $request, $id)

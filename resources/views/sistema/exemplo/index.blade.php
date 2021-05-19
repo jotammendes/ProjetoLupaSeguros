@@ -19,6 +19,7 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
+                            <th>Categoria</th>
                             <th>Data</th>
                             <th>Ações</th>
                         </tr>
@@ -26,6 +27,7 @@
                     <tfoot>
                         <tr>
                             <th>Nome</th>
+                            <th>Categoria</th>
                             <th>Data</th>
                             <th>Ações</th>
                         </tr>
@@ -34,6 +36,7 @@
                         @foreach($exemplos as $exemplo)
                         <tr>
                             <td>{{ $exemplo->nome }}</td>
+                            <td>{{ $exemplo->categoria->titulo }}</td>
                             <td>{{ date('d/m/Y H:i:s', strtotime($exemplo->data)) }}</td>
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('exemplo.show', $exemplo->id)}}">Detalhes</a>
@@ -72,6 +75,10 @@
                         <div class="form-group col-md-6">
                             <label for="detalhes-nome">Nome</label>
                             <input type="text" id="detalhes-nome" name="detalhes-nome" class="form-control" readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="detalhes-categoria">Categoria</label>
+                            <input type="text" id="detalhes-categoria" name="detalhes-categoria" class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="detalhes-quantidade">Quantidade</label>
@@ -131,6 +138,7 @@
 
                 $.getJSON(button.data('url'),(resposta) => {
                     $('#detalhes-nome').val(resposta.nome);
+                    $('#detalhes-categoria').val(resposta.categoria.titulo);
                     $('#detalhes-quantidade').val(resposta.quantidade);
                     $('#detalhes-valor').val(resposta.valor);
                     $('#detalhes-data').val(resposta.data);

@@ -16,7 +16,7 @@ class ExemploRequest extends FormRequest
         return [
             'imagem' => (!empty($this->request->all()['id']) ? ['image'] : ['required','image']),
             'nome' => ['required', 'string'],
-            'valor' => ['required', 'float'],
+            'valor' => ['required', 'numeric'],
             'quantidade' => ['required', 'integer'],
             'data' => ['required', 'date'],
         ];

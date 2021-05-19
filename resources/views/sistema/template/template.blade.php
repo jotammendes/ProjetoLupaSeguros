@@ -82,7 +82,7 @@
                 <main>
                     <div class="container-fluid">
                         <div class="mt-4">
-                            @component('sistema.component.alertas')
+                            @component('sistema.componente.alertas')
                             @endcomponent
                         </div>
                         

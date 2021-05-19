@@ -17,6 +17,7 @@ class Exemplo extends Model
         'valor',
         'quantidade',
         'data',
+        'categoria_id',
     ];
 
     public function categoria()

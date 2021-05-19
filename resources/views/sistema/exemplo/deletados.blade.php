@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
+                            <th>Categoria</th>
                             <th>Data</th>
                             <th>Ações</th>
                         </tr>
@@ -25,6 +26,7 @@
                     <tfoot>
                         <tr>
                             <th>Nome</th>
+                            <th>Categoria</th>
                             <th>Data</th>
                             <th>Ações</th>
                         </tr>
@@ -33,6 +35,7 @@
                         @foreach($exemplos as $exemplo)
                         <tr>
                             <td>{{ $exemplo->nome }}</td>
+                            <td>{{ $exemplo->categoria->titulo }}</td>
                             <td>{{ date('d/m/Y H:i:s', strtotime($exemplo->data)) }}</td>
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('exemplo.show', $exemplo->id)}}">Detalhes</a>

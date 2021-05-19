@@ -15,6 +15,15 @@
         </div>
     </div>
     <div class="col-md-6 col-sm-12">
+        <label for="categoria_id">Categoria</label>
+        <select id="categoria_id" di="categoria_id" name="categoria_id" class="form-control" required>
+            <option value="" {{ isset($exemplo)? '': 'selected' }}  disabled> Selecione uma categoria </option>
+            @foreach($categorias as $categoria)
+                <option value="{{$categoria->id}}" {{ isset($exemplo) ? (old('categoria_id') == $categoria->id) ? : 'selected' : '' }}>{{$categoria->titulo}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-md-6 col-sm-12">
         <div class="form-group">
             <label for="quantidade">Quantidade</label>
             <input type="number" step="1" id="quantidade" name="quantidade" value="{{ isset($exemplo)? $exemplo->quantidade: old('quantidade')}}" class="form-control" required>
