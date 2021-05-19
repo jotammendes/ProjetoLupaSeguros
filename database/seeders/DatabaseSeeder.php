@@ -7,6 +7,9 @@ use App\Models\Cliente;
 use App\Models\Veiculo;
 use App\Models\Seguradora;
 
+use App\Models\CategoriaExemplo;
+use App\Models\Exemplo;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,5 +22,8 @@ class DatabaseSeeder extends Seeder
         Cliente::factory(10)->create();
         Veiculo::factory(10)->create();
         Seguradora::factory(20)->create();
+
+        CategoriaExemplo::factory(5)->create();
+        Exemplo::factory(15)->create();
     }
 }
