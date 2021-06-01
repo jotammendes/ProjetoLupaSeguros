@@ -25,5 +25,32 @@ class Cliente extends Model
         'vigencia_saida',
     ];
 
+    protected $appends = [
+        'data_nascimento_formatada',
+        'preco_anterior_formatado',
+        'vigencia_entrada_formatada',
+        'vigencia_saida_formatada',
+    ];
 
+    public function getDataNascimentoFormatadaAttribute()
+    {
+        return date('d/m/Y H:i:s', strtotime($this->data));
+    }
+
+    public function getPrecoAnteriorFormatadoAttribute()
+    {
+        return number_format($this->valor, 2, ',', '');
+    }
+
+    public function getVigenciaEntradaFormatadaAttribute()
+    {
+        return date('d/m/Y H:i:s', strtotime($this->data));
+    }
+
+    public function getVigenciaSaidaFormatadaAttribute()
+    {
+        return date('d/m/Y H:i:s', strtotime($this->data));
+    }
+
+    
 }
