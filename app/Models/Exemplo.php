@@ -20,6 +20,25 @@ class Exemplo extends Model
         'categoria_id',
     ];
 
+    protected $appends = [
+        'valor_formatado',
+        'data_formatada',
+    ];
+
+    protected $with = [
+        'categoria',
+    ];
+
+    public function getValorFormatadoAttribute()
+    {
+        return number_format($this->valor, 2, ',', '');
+    }
+
+    public function getDataFormatadaAttribute()
+    {
+        return date('d/m/Y H:i:s', strtotime($this->data));
+    }
+
     public function categoria()
     {
         return $this->belongsTo('App\Models\CategoriaExemplo', 'categoria_id');

@@ -13,7 +13,7 @@ class ExemploController extends Controller
 {
     public function index()
     {
-        $exemplos = Exemplo::all();
+        $exemplos = Exemplo::get();
 
         return view('sistema.exemplo.index', compact('exemplos'));
     }
@@ -28,7 +28,7 @@ class ExemploController extends Controller
     public function store(ExemploRequest $request)
     {
         $data = $request->all();
-        $data['imagem'] = $request->file('imagem')->store('exemplo','public');
+        $data['imagem'] = '/storage/' . $request->file('imagem')->store('exemplo','public');
         $exemplo = Exemplo::create($data);
         
         return redirect(route('exemplo.index'))->with('success', 'Exemplo cadastrado com sucesso!');
@@ -37,8 +37,6 @@ class ExemploController extends Controller
     public function show($id)
     {
         $exemplo = Exemplo::withTrashed()->find($id);
-        $exemplo->data = date('d/m/Y H:i:s', strtotime($exemplo->data));
-        $exemplo->categoria;
 
         return json_encode($exemplo);
     }
@@ -58,8 +56,8 @@ class ExemploController extends Controller
 
         //Verificando se o arquivo de foto é valido
         if ($request->hasFile('imagem')) {
-            Storage::delete('public/'.$exemplo->imagem);
-            $data['imagem'] = $request->file('imagem')->store('exemplo','public');
+            Storage::delete('public/' . substr($exemplo->imagem, 9));
+            $data['imagem'] = '/storage/' . $request->file('imagem')->store('exemplo','public');
         }
         $exemplo->update($data);
 
@@ -92,7 +90,7 @@ class ExemploController extends Controller
     public function deletar($id)
     {
         $exemplo = Exemplo::withTrashed()->find($id);
-        Storage::delete('public/exemplo'.$exemplo->photo);
+        Storage::delete('public/' . substr($exemplo->imagem, 9));
         $exemplo->forceDelete();
 
         return redirect(route('exemplo.deletados'))->with('success', 'Exemplo deletado permanentemente com sucesso!');

@@ -4,7 +4,7 @@
             <label for="imagem">Imagem</label>
             <input type="file" id="imagem" name="imagem" value="{{ old('imagem') }}" class="form-control" accept="image/*" {{ isset($exemplo)? '': 'required'}} >
             @if(isset($exemplo))
-            <img src="{{ asset('storage/'.$exemplo->imagem) }}" alt="Imagem Exemplo">
+            <img src="{{ asset($exemplo->imagem) }}" alt="Imagem Exemplo">
             @endif
         </div>
     </div>

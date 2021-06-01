@@ -159,7 +159,7 @@
                     $("#detalhes-quantidade").val(resposta.quantidade);
                     $("#detalhes-valor").val(resposta.valor);
                     $("#detalhes-data").val(resposta.data);
-                    $('#detalhes-imagem').attr('src', '/storage/'+ resposta.imagem)
+                    $('#detalhes-imagem').attr('src', resposta.imagem)
                 });
             })
 

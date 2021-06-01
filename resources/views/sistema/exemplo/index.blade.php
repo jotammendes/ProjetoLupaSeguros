@@ -37,7 +37,7 @@
                         <tr>
                             <td>{{ $exemplo->nome }}</td>
                             <td>{{ $exemplo->categoria->titulo }}</td>
-                            <td>{{ date('d/m/Y H:i:s', strtotime($exemplo->data)) }}</td>
+                            <td>{{ $exemplo->data_formatada }}</td>
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('exemplo.show', $exemplo->id)}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="{{ route('exemplo.edit', $exemplo->id) }}">Editar</a>
@@ -140,9 +140,9 @@
                     $('#detalhes-nome').val(resposta.nome);
                     $('#detalhes-categoria').val(resposta.categoria.titulo);
                     $('#detalhes-quantidade').val(resposta.quantidade);
-                    $('#detalhes-valor').val(resposta.valor);
-                    $('#detalhes-data').val(resposta.data);
-                    $('#detalhes-imagem').attr('src', '/storage/'+ resposta.imagem)
+                    $('#detalhes-valor').val(resposta.valor_formatado);
+                    $('#detalhes-data').val(resposta.data_formatada);
+                    $('#detalhes-imagem').attr('src', resposta.imagem)
                 });
             })
 
