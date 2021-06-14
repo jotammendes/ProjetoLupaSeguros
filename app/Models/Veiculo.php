@@ -9,7 +9,7 @@ class Veiculo extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'veiculo_id',
+        'cliente_id',
         'descricao_veiculo',					
         'chassi',
         'placa',
@@ -29,4 +29,28 @@ class Veiculo extends Model
         'tipo_de_residencia',
         'distancia_ate_o_trabalho',
     ];
+
+    protected $appends = [
+        'fator_de_ajuste_formatado',
+        'valor_de_referencia_formatado',
+    ];
+
+    protected $with = [
+        'cliente',
+    ];
+
+    public function getFatorDeAjusteFormatadoAttribute()
+    {
+        return number_format($this->valor, 2, ',', '');
+    }
+
+    public function getValorDeReferenciaFormatadoAttribute()
+    {
+        return number_format($this->valor, 2, ',', '');
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Models\Cliente', 'cliente_id');
+    }
 }
