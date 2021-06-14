@@ -27,3 +27,22 @@ Route::get('/exemplo/deletados', [ExemploController::class, 'deletados'])->name(
 Route::post('/exemplo/restaurar/{id}', [ExemploController::class, 'restaurar'])->name('exemplo.restaurar');
 Route::delete('/exemplo/deletar/{id}', [ExemploController::class, 'deletar'])->name('exemplo.deletar');
 Route::resource('exemplo', ExemploController::class);
+
+// rotas para User
+Route::get('/user/deletados', [UserController::class, 'deletados'])->name('user.deletados');
+Route::post('/user/restaurar/{id}', [UserController::class, 'restaurar'])->name('user.restaurar');
+Route::delete('/user/deletar/{id}', [UserController::class, 'deletar'])->name('user.deletar');
+Route::resource('user',UserController::class);
+
+// rotas para Cliente
+Route::get('/cliente/deletados', [ClienteController::class, 'deletados'])->name('cliente.deletados');
+Route::post('/cliente/restaurar/{id}', [ClienteController::class, 'restaurar'])->name('cliente.restaurar');
+Route::delete('/cliente/deletar/{id}', [ClienteController::class, 'deletar'])->name('cliente.deletar');
+Route::resource('cliente',ClienteController::class);
+
+// rotas para Veiculo
+Route::resource('veiculo',VeiculoController::class);
+
+// rotas para Seguradora
+Route::resource('seguradora',SeguradoraController::class);
+

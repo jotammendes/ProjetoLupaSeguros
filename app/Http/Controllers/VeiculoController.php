@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Veiculo;
-
+use App\Http\Requests\VeiculoRequest;
 
 class VeiculoController extends Controller
 {
     public function index($id)
     {
-        $veiculos = Veiculo::where('veiculo_id','==',$id)->get();
+        $veiculos = Veiculo::where('cliente_id','==',$id)->get();
     }
 
     public function create()
@@ -21,7 +21,7 @@ class VeiculoController extends Controller
         return view('sistema.veiculo.crud', compact('veiculo'));*/
     }
 
-    public function store(Request $request)
+    public function store(VeiculoRequest $request)
     {
         $data = $request->all();
         $veiculo = Veiculo::create($data);
@@ -45,7 +45,7 @@ class VeiculoController extends Controller
         return view('sistema.veiculo.crud', compact('veiculo'));
     }
 
-    public function update(Request $request, $id)
+    public function update(VeiculoRequest $request, $id)
     {
         $veiculo = Veiculo::find($id);
         $data = $request->all();
