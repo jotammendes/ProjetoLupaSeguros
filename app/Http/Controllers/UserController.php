@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -23,7 +24,7 @@ class UserController extends Controller
         return view('sistema.user.crud');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $data = $request->all();
         $user = User::create($data);
@@ -45,7 +46,7 @@ class UserController extends Controller
         return view('sistema.user.crud', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::find($id);
         $data = $request->all();

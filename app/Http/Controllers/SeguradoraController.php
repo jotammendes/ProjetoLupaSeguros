@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Seguradora;
+use App\Http\Requests\SeguradoraRequest;
 
 class SeguradoraController extends Controller
 {
@@ -18,7 +19,7 @@ class SeguradoraController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(SeguradoraRequest $request)
     {
         $data = $request->all();
         $seguradora = Seguradora::create($data);
@@ -42,7 +43,7 @@ class SeguradoraController extends Controller
         return view('sistema.seguradora.crud', compact('seguradora'));
     }
 
-    public function update(Request $request, $id)
+    public function update(SeguradoraRequest $request, $id)
     {
         $seguradora = Seguradora::find($id);
         $data = $request->all();

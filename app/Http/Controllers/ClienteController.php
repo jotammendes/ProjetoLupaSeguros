@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Clientes;
+use App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -23,7 +24,7 @@ class ClienteController extends Controller
         return view('sistema.cliente.crud');
     }
 
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
         $data = $request->all();
         $cliente = Cliente::create($data);
@@ -45,7 +46,7 @@ class ClienteController extends Controller
         return view('sistema.cliente.crud', compact('cliente'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ClienteRequest $request, $id)
     {
         $cliente = Cliente::find($id);
         $data = $request->all();
