@@ -70,6 +70,19 @@
                                     <a class="nav-link" href="{{ route('exemplo.create') }}">Novo Exemplo</a>
                                 </nav>
                             </div>
+
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Usuário
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('user.index') }}">Lista de Usuários</a>
+                                    <a class="nav-link" href="{{ route('user.deletados') }}">Lista de Desativados</a>
+                                    <a class="nav-link" href="{{ route('user.create') }}">Novo Usuário</a>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

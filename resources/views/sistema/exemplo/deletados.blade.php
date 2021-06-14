@@ -36,7 +36,7 @@
                         <tr>
                             <td>{{ $exemplo->nome }}</td>
                             <td>{{ $exemplo->categoria->titulo }}</td>
-                            <td>{{ date('d/m/Y H:i:s', strtotime($exemplo->data)) }}</td>
+                            <td>{{ $exemplo->data_formatada }}</td>
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('exemplo.show', $exemplo->id)}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="#modalRestaurar" data-toggle="modal" data-url="{{ route('exemplo.restaurar', $exemplo->id)}}">Restaurar</a>
