@@ -6,17 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
     public function index()
     {
         $users = User::all();
-
-        /* Return da view que não existe
         
         return view('sistema.user.index', compact('users'));
-        */
     }
 
     public function create()
@@ -27,6 +25,10 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $data = $request->all();
+        
+        if($data['password'] !== $data['confirm_password'])
+            return back()->withInput()->with('danger', 'Senha não confirmada!');
+        
         $user = User::create($data);
         
         return redirect(route('user.index'))->with('success', 'user cadastrado com sucesso!');
@@ -46,10 +48,22 @@ class UserController extends Controller
         return view('sistema.user.crud', compact('user'));
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
         $data = $request->all();
+
+        $email = User::where('email', $data['email'])->first();
+
+        // verificando email
+        if($email && $email->email !== $user['email']) {
+            return back()->withInput()->with('danger', 'E-mail já cadastrado!');
+        }
+
+        // verificando se campo senha foi preenchido
+        if(!$data['password']) unset($data['password']);
+        if(!$data['confirm_password']) unset($data['confirm_password']);
+
         $user->update($data);
 
         return redirect(route('user.index'))->with('success', 'User atualizado com sucesso!');

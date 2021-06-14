@@ -13,7 +13,7 @@ class ExemploController extends Controller
 {
     public function index()
     {
-        $exemplos = Exemplo::get();
+        $exemplos = Exemplo::all();
 
         return view('sistema.exemplo.index', compact('exemplos'));
     }
@@ -28,6 +28,7 @@ class ExemploController extends Controller
     public function store(ExemploRequest $request)
     {
         $data = $request->all();
+        dd($data);
         $data['imagem'] = '/storage/' . $request->file('imagem')->store('exemplo','public');
         $exemplo = Exemplo::create($data);
         

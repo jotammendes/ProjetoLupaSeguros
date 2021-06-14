@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaExemploController;
 use App\Http\Controllers\ExemploController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\VeiculoController;
+use App\Http\Controllers\SeguradoraController;
 
 /*
 |--------------------------------------------------------------------------
