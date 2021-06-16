@@ -34,22 +34,22 @@ class Cliente extends Model
 
     public function getDataNascimentoFormatadaAttribute()
     {
-        return date('d/m/Y H:i:s', strtotime($this->data));
+        return date('d/m/Y', strtotime($this->data_nascimento));
     }
 
     public function getPrecoAnteriorFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return number_format($this->preco_anterior, 2, ',', '');
     }
 
     public function getVigenciaEntradaFormatadaAttribute()
     {
-        return date('d/m/Y H:i:s', strtotime($this->data));
+        return date('d/m/Y', strtotime($this->vigencia_entrada));
     }
 
     public function getVigenciaSaidaFormatadaAttribute()
     {
-        return date('d/m/Y H:i:s', strtotime($this->data));
+        return date('d/m/Y', strtotime($this->vigencia_saida));
     }
 
     

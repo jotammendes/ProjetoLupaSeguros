@@ -90,7 +90,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="detalhes-data">Data</label>
-                            <input type="datatime-local" id="detalhes-data" name="detalhes-data" class="form-control" readonly>
+                            <input type="datetime" id="detalhes-data" name="detalhes-data" class="form-control" readonly>
                         </div>
                     </div>
                 </div>

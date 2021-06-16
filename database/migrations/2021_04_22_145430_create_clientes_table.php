@@ -23,11 +23,11 @@ class CreateClientesTable extends Migration
             $table->string('genero');
             $table->string('telefone');
             $table->string('email');
-            $table->string('seguradora_anterior');
-            $table->float('preco_anterior',12,2);
-            $table->integer('bonus');
-            $table->date('vigencia_entrada');
-            $table->date('vigencia_saida');
+            $table->string('seguradora_anterior')->nullable();
+            $table->float('preco_anterior',12,2)->nullable();
+            $table->integer('bonus')->nullable();
+            $table->date('vigencia_entrada')->nullable();
+            $table->date('vigencia_saida')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

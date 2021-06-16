@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Clientes;
+use App\Models\Cliente;
 use App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
@@ -13,10 +13,8 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::all();
 
-        /* Return da view que não existe
-        
         return view('sistema.cliente.index', compact('clientes'));
-        */
+        
     }
 
     public function create()

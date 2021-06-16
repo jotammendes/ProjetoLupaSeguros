@@ -83,6 +83,20 @@
                                     <a class="nav-link" href="{{ route('user.create') }}">Novo Usuário</a>
                                 </nav>
                             </div>
+
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="false" aria-controls="collapseCliente">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-injured" aria-hidden="true"></i></div>
+                                Clientes
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseCliente" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('cliente.index') }}">Lista de Clientes</a>
+                                    <a class="nav-link" href="{{ route('cliente.deletados') }}">Lista de Clientes Desativados</a>
+                                    <a class="nav-link" href="{{ route('cliente.create') }}">Novo Cliente</a>
+                                </nav>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
