@@ -41,12 +41,12 @@ class Veiculo extends Model
 
     public function getFatorDeAjusteFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return number_format($this->fator_de_ajuste, 2, ',', '');
     }
 
     public function getValorDeReferenciaFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return number_format($this->valor_de_referencia, 2, ',', '');
     }
 
     public function cliente()

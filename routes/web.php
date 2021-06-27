@@ -45,7 +45,13 @@ Route::delete('/cliente/deletar/{id}', [ClienteController::class, 'deletar'])->n
 Route::resource('cliente',ClienteController::class);
 
 // rotas para Veiculo
-Route::resource('veiculo',VeiculoController::class);
+Route::get('/veiculo/index/{cliente}',[VeiculoController::class, 'index'])->name('veiculo.index');
+Route::get('/veiculo/create/{cliente}',[VeiculoController::class, 'create'])->name('veiculo.create');
+Route::post('/veiculo/store/{cliente}',[VeiculoController::class, 'store'])->name('veiculo.store');
+Route::get('/veiculo/show/{id}',[VeiculoController::class, 'show'])->name('veiculo.show');
+Route::get('/veiculo/edit/{cliente}/{id}',[VeiculoController::class, 'edit'])->name('veiculo.edit');
+Route::put('/veiculo/update/{cliente}/{id}',[VeiculoController::class, 'update'])->name('veiculo.update');
+Route::delete('/veiculo/destroy/{cliente}/{id}',[VeiculoController::class, 'destroy'])->name('veiculo.destroy');
 
 // rotas para Seguradora
 Route::resource('seguradora',SeguradoraController::class);

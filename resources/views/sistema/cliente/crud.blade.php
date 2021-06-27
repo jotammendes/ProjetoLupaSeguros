@@ -1,6 +1,6 @@
 @extends('sistema.template.template')
 
-@section('titulo', (isset($categoria) ? "Editar" : "Cadastrar")." Cliente")
+@section('titulo', (isset($cliente) ? "Editar" : "Cadastrar")." Cliente")
 
 @section('conteudo')
     <h1 class="my-4">Cliente</h1>

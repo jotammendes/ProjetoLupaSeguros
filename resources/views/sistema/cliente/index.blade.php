@@ -41,6 +41,7 @@
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('cliente.show', $cliente->id)}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="{{ route('cliente.edit', $cliente->id) }}">Editar</a>
+                                <a class="btn btn-secondary" href="{{ route('veiculo.index', $cliente->id) }}">Veiculos</a>
                                 <a class="btn btn-danger" href="#modalDesativar" data-toggle="modal" data-url="{{ route('cliente.destroy', $cliente->id)}}">Desativar</a>
                             </td>
                         </tr>
