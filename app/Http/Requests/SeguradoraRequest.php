@@ -15,7 +15,7 @@ class SeguradoraRequest extends FormRequest
     {
         return [
             
-            'foto' => (!empty($this->request->all()['id']) ? ['nullable','image'] : ['required','image']),
+            'foto' => (!empty($this->request->all()['id']) ? ['required','image'] : ['nullable','image']),
             'nome' => ['required', 'string'],
             'cnpj' => ['nullable','string'],
             'valor' => ['required', 'numeric'],

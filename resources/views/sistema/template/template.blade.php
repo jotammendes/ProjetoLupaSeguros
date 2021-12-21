@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -39,37 +39,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Início</div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-
                             <div class="sb-sidenav-menu-heading">Páginas</div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategoriaExemplo" aria-expanded="false" aria-controls="collapseCategoriaExemplo">
-                                <div class="sb-nav-link-icon"><i class="fas fa-dice-d6"></i></div>
-                                Categoria Exemplo
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseCategoriaExemplo" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('categoria_exemplo.index') }}">Lista de Categorias</a>
-                                    <a class="nav-link" href="{{ route('categoria_exemplo.create') }}">Nova Categoria</a>
-                                </nav>
-                            </div>
-
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExemplo" aria-expanded="false" aria-controls="collapseExemplo">
-                                <div class="sb-nav-link-icon"><i class="fas fa-dice-d20"></i></div>
-                                Exemplo
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseExemplo" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('exemplo.index') }}">Lista de Exemplos</a>
-                                    <a class="nav-link" href="{{ route('exemplo.deletados') }}">Lista de Desativados</a>
-                                    <a class="nav-link" href="{{ route('exemplo.create') }}">Novo Exemplo</a>
-                                </nav>
-                            </div>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
@@ -97,6 +67,19 @@
                                 </nav>
                             </div>
                             
+                            @isset($cliente_id)
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVeiculo" aria-expanded="false" aria-controls="collapseVeiculo">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-user-injured" aria-hidden="true"></i></div>
+                                    Veículos
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseVeiculo" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="{{ route('veiculo.index', ['cliente_id' => $cliente_id]) }}">Lista de Veículos</a>
+                                        <a class="nav-link" href="{{ route('veiculo.create', ['cliente_id' => $cliente_id]) }}">Novo Veículo</a>
+                                    </nav>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

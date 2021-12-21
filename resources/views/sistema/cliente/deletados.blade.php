@@ -5,7 +5,7 @@
 @endsection
 
 @section('conteudo')
-    <h1 class="my-4">cliente</h1>
+    <h1 class="my-4">Cliente</h1>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
@@ -40,7 +40,7 @@
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('cliente.show', $cliente->id)}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="#modalRestaurar" data-toggle="modal" data-url="{{ route('cliente.restaurar', $cliente->id)}}">Restaurar</a>
-                                <a class="btn btn-danger" href="#modalDeletar" data-toggle="modal" data-url="{{ route('cliente.deletar', $cliente->id)}}">Deletar</a>
+                                <a class="btn btn-danger" href="#modalDeletar" data-toggle="modal" data-url="{{ route('cliente.deletar', $cliente->id)}}">Excluir</a>
                             </td>
                         </tr>
                         @endforeach
@@ -147,17 +147,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Deletar Cliente</h5>
+                    <h5 class="modal-title">Excluir Cliente</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
-                <div align="center" class="modal-body">Tem certeza que deseja deletar permanentemente este Cliente?</div>
+                <div align="center" class="modal-body">Tem certeza que deseja excluir permanentemente este Cliente?</div>
                 <div class="modal-footer">
                     <form id="deletar" method="POST" enctype="multipart/form-data" name="deletar">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" form="deletar" class="btn btn-danger">Deletar</button>
+                        <button type="submit" form="deletar" class="btn btn-danger">Excluir</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </form>
                 </div>

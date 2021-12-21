@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.text-body {
+  font-size: 14px;
+  margin: 0;
+  color: #a7a7a7;
+}
+
+.text-body:nth-child(2n) {
+  margin-top: 8px;
+}
+
+.text-small {
+  font-size: 11px;
+  margin: 8px 0;
+}
+
+.footer-date {
+  color: grey;
+}
+
+.footer-attempt {
+  color: red;
+}
+
+.dados-cliente > div:not(:last-child) {
+  border-right: 2px solid #dadada;
+}

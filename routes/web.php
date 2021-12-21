@@ -20,7 +20,7 @@ use App\Http\Controllers\SeguradoraController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('cliente.index'));
 });
 
 // rotas para categoria de exemplo
@@ -45,14 +45,12 @@ Route::delete('/cliente/deletar/{id}', [ClienteController::class, 'deletar'])->n
 Route::resource('cliente',ClienteController::class);
 
 // rotas para Veiculo
-Route::get('/veiculo/index/{cliente}',[VeiculoController::class, 'index'])->name('veiculo.index');
-Route::get('/veiculo/create/{cliente}',[VeiculoController::class, 'create'])->name('veiculo.create');
-Route::post('/veiculo/store/{cliente}',[VeiculoController::class, 'store'])->name('veiculo.store');
-Route::get('/veiculo/show/{id}',[VeiculoController::class, 'show'])->name('veiculo.show');
-Route::get('/veiculo/edit/{cliente}/{id}',[VeiculoController::class, 'edit'])->name('veiculo.edit');
-Route::put('/veiculo/update/{cliente}/{id}',[VeiculoController::class, 'update'])->name('veiculo.update');
-Route::delete('/veiculo/destroy/{cliente}/{id}',[VeiculoController::class, 'destroy'])->name('veiculo.destroy');
+Route::prefix('{cliente_id}')->group(function () {
+    Route::get('/veiculo/{veiculo}/relatorio', [VeiculoController::class, 'relatorio'])->name('veiculo.relatorio');
+    Route::resource('veiculo', VeiculoController::class);
+});
 
 // rotas para Seguradora
-Route::resource('seguradora',SeguradoraController::class);
-
+Route::prefix('{veiculo_id}')->group(function () {
+    Route::resource('seguradora',SeguradoraController::class);
+});

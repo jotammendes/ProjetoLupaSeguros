@@ -53,4 +53,9 @@ class Veiculo extends Model
     {
         return $this->belongsTo('App\Models\Cliente', 'cliente_id');
     }
+
+    public function seguradoras()
+    {
+        return $this->hasMany('App\Models\Seguradora', 'veiculo_id');
+    }
 }

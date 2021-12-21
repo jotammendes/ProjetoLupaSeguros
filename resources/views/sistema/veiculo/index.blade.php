@@ -1,30 +1,30 @@
 @extends('sistema.template.template')
 
 @section('titulo')
-    Veiculo
+    Veículo
 @endsection
 
 @section('conteudo')
-    <h1 class="my-4">Veiculo</h1>
+    <h1 class="my-4">Veículo</h1>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Tabela de Veiculos
+            Tabela de Veículos
         </div>
         <div class="card-body">
-            <a class="btn btn-primary mb-3" href="{{ route('veiculo.create',$cliente) }}">Novo Veiculo</a>
+            <a class="btn btn-primary mb-3" href="{{ route('veiculo.create', ['cliente_id' => $cliente_id]) }}">Novo Veículo</a>
             <div class="table-responsive">
                 <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Descrição do Veiculo</th>
+                            <th>Descrição do Veículo</th>
                             <th>Ano</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Descrição do Veiculo</th>
+                            <th>Descrição do Veículo</th>
                             <th>Ano</th>
                             <th>Ações</th>
                         </tr>
@@ -35,10 +35,11 @@
                             <td>{{ $veiculo->descricao_veiculo }}</td>
                             <td>{{ $veiculo->ano }}</td>
                             <td>
-                                <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('veiculo.show', $veiculo->id)}}">Detalhes</a>
-                                <a class="btn btn-warning text-white" href="{{ route('veiculo.edit', ['id'=>$veiculo->id,'cliente'=>$cliente]) }}">Editar</a>
+                                <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('veiculo.show', ['cliente_id' => $cliente_id, 'veiculo' => $veiculo->id])}}">Detalhes</a>
+                                <a class="btn btn-warning text-white" href="{{ route('veiculo.edit', ['veiculo' => $veiculo->id, 'cliente_id' => $cliente_id]) }}">Editar</a>
                                 <a class="btn btn-secondary" href="{{ route('seguradora.index', $veiculo->id) }}">Seguradoras</a>
-                                <a class="btn btn-danger" href="#modalExcluir" data-toggle="modal" data-url="{{ route('veiculo.destroy', ['cliente'=>$cliente,'id'=>$veiculo->id])}}">Excluir</a>
+                                <a class="btn btn-info" href="{{ route('veiculo.relatorio', ['veiculo' => $veiculo->id, 'cliente_id' => $cliente_id]) }}" target="_blank">Relatório</a>
+                                <a class="btn btn-danger" href="#modalExcluir" data-toggle="modal" data-url="{{ route('veiculo.destroy', ['cliente_id' => $cliente_id, 'veiculo' => $veiculo->id])}}">Excluir</a>
                             </td>
                         </tr>
                         @endforeach
@@ -53,14 +54,14 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Detalhes do Veiculo</h5>
+                    <h5 class="modal-title">Detalhes do Veículo</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="descricao_veiculo">Descrição do Veiculo</label>
+                            <label for="descricao_veiculo">Descrição do Veículo</label>
                             <input type="text" id="detalhes-descricao_veiculo" name="descricao_veiculo" class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-6">
@@ -128,7 +129,7 @@
                             <input type="text" id="detalhes-tipo_de_residencia" name="tipo_de_residencia" class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="distancia_ate_o_trabalho">Distancia ate o Trabalho</label> 
+                            <label for="distancia_ate_o_trabalho">Distância ate o Trabalho</label> 
                             <input type="text" id="detalhes-distancia_ate_o_trabalho" name="distancia_ate_o_trabalho" class="form-control" readonly>
                         </div>
                     </div>
@@ -140,22 +141,22 @@
         </div>
     </div>
 
-    <!-- Modal Desativar-->
+    <!-- Modal Excluir-->
     <div id="modalExcluir" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Desativar Veiculo</h5>
+                    <h5 class="modal-title">Excluir Veiculo</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
-                <div align="center" class="modal-body">Tem certeza que deseja desativar este Veiculo?</div>
+                <div align="center" class="modal-body">Tem certeza que deseja excluir este Veículo?</div>
                 <div class="modal-footer">
-                    <form id="desativar" method="POST" enctype="multipart/form-data" name="desativar">
+                    <form id="excluir" method="POST" enctype="multipart/form-data" name="excluir">
                         @csrf
-                        @method('delete')
-                        <button type="submit" form="desativar" class="btn btn-danger">Excluir</button>
+                        @method('DELETE')
+                        <button type="submit" form="excluir" class="btn btn-danger">Excluir</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </form>
                 </div>
@@ -176,7 +177,6 @@
                 var button = $(event.relatedTarget)
 
                 $.getJSON(button.data('url'),(resposta) => {
-                    console.log(resposta);
                     $('#detalhes-descricao_veiculo').val(resposta.descricao_veiculo);
                     $('#detalhes-chassi').val(resposta.chassi);
                     $('#detalhes-placa').val(resposta.placa);
@@ -199,10 +199,11 @@
                 });
             })
 
-            $('#modalDesativar').on('show.bs.modal', function (event) {
+            $('#modalExcluir').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget)
+                console.log(event);
 
-                this.querySelector("form#desativar").action = button.data('url')
+                this.querySelector("form#excluir").action = button.data('url')
             })
         });
     </script>
