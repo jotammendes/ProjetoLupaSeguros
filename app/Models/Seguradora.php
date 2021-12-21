@@ -43,32 +43,32 @@ class Seguradora extends Model
 
     public function getFranquiaFormatadaAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return 'R$ ' . number_format($this->franquia, 2, ',', '');
     }
 
     public function getValorFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return 'R$ ' . number_format($this->valor, 2, ',', '');
     }
 
     public function getDanosMateriaisFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return 'R$ ' . number_format($this->danos_materiais, 2, ',', '');
     }
 
     public function getDanosCorporaisFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return 'R$ ' . number_format($this->danos_corporais, 2, ',', '');
     }
 
     public function getDanosMoraisFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return 'R$ ' . number_format($this->danos_morais, 2, ',', '');
     }
 
     public function getMorteInvalidezFormatadoAttribute()
     {
-        return number_format($this->valor, 2, ',', '');
+        return 'R$ ' . number_format($this->morte_invalidez, 2, ',', '');
     }
 
     public function veiculo()

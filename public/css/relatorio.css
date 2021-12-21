@@ -5,7 +5,7 @@
 }
 
 .text-body {
-  font-size: 14px;
+  font-size: 12px;
   margin: 0;
   color: #a7a7a7;
 }
@@ -15,7 +15,7 @@
 }
 
 .text-small {
-  font-size: 11px;
+  font-size: 10px;
   margin: 8px 0;
 }
 
@@ -29,4 +29,31 @@
 
 .dados-cliente > div:not(:last-child) {
   border-right: 2px solid #dadada;
+}
+
+.tabela-seguradoras th,
+.tabela-seguradoras td {
+  font-size: 12px;
+  color: #000;
+  text-align: center;
+  border: 1.5px solid #dadada;
+  padding: 8px 16px;
+}
+
+.tabela-seguradoras th {
+  font-weight: bold;
+  color: grey;
+}
+
+.tabela-seguradoras td img {
+  width: 100px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+.tabela-seguradoras td p {
+  font-size: 10px;
+  color: grey;
+  margin: 0;
 }
