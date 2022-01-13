@@ -19,11 +19,11 @@
   <body>
     <div class="d-flex flex-column">
       <div class="header d-flex gap-3 align-items-center">
-        <img src="{{ asset('/img/logo-teste.png') }}" width="200" alt="Logo Lupa Seguros">
+        <img src="{{ asset('/img/logo-com-fundo.png') }}" width="200" alt="Logo Lupa Seguros">
         <div>
-          <p class="text-small"><b>Hrd Corretora De Seguros E Administraçao Ltda</b></p>
-          <p class="text-small">Rua Clóvis Machado, 156 - SL 614/616 - Praia Do Suá - Vitória/ES</p>
-          <p class="text-small">HRDSEGUROS@HRDSEGUROS.COM.BR</p>
+          <p class="text-small"><b>LuPa Corretora e Administradora de Seguros Ltda</b></p>
+          <p class="text-small">Rua Fortaleza, 1639, Itapoã, Vila Velha/ES</p>
+          <p class="text-small">lucasfaccinicor@gmail.com</p>
         </div>
       </div>
 
@@ -115,7 +115,7 @@
 
     <div class="d-flex flex-column">
       <div class="header d-flex gap-3 align-items-center">
-        <img src="{{ asset('/img/logo-teste.png') }}" width="200" alt="Logo Lupa Seguros">
+        <img src="{{ asset('/img/logo-com-fundo.png') }}" width="200" alt="Logo Lupa Seguros">
         <div>
           <p class="text-small"><b>Hrd Corretora De Seguros E Administraçao Ltda</b></p>
           <p class="text-small">Rua Clóvis Machado, 156 - SL 614/616 - Praia Do Suá - Vitória/ES</p>
