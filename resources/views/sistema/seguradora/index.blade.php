@@ -18,28 +18,31 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>CNPF</th>
                             <th>Valor</th>
                             <th>Foto</th>
+                            <th>Recomendado</th>
+                            <th>Escolhido</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Nome</th>
-                            <th>CNPF</th>
                             <th>Valor</th>
                             <th>Foto</th>
+                            <th>Recomendado</th>
+                            <th>Escolhido</th>
                             <th>Ações</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach($seguradoras as $seguradora)
-                        <tr>
+                        <tr style="background-color: {{ $seguradora->escolhido ? '#b5d1ff': ($seguradora->recomendado ? '#cfffd0': '') }}">
                             <td>{{ $seguradora->nome }}</td>
-                            <td>{{ $seguradora->cnpj }}</td>
                             <td>{{ $seguradora->valor }}</td>
                             <td><a href="{{ $seguradora->foto }}" target="_blank"><img src="{{ $seguradora->foto }}" alt="{{ $seguradora->nome }}" height="60px"></a></td>
+                            <td class="{{ $seguradora->recomendado ? 'text-success': 'text-danger' }}">{{ $seguradora->recomendado ? 'Sim': 'Não' }}</td>
+                            <td class="{{ $seguradora->escolhido ? 'text-success': 'text-danger' }}">{{ $seguradora->escolhido ? 'Sim': 'Não' }}</td>
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('seguradora.show', ['veiculo_id' => $veiculo_id, 'seguradora' => $seguradora->id])}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="{{ route('seguradora.edit', ['seguradora' => $seguradora->id, 'veiculo_id' => $veiculo_id]) }}">Editar</a>
@@ -73,8 +76,8 @@
                             <input type="text" id="detalhes-nome" name="nome" class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="cnpj">CNPJ</label>
-                            <input type="text" id="detalhes-cnpj" name="cnpj" class="form-control" readonly>
+                            <label for="proposta">Nº da Proposta</label>
+                            <input type="text" id="detalhes-proposta" name="proposta" class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="valor">Valor</label>
@@ -170,7 +173,7 @@
 
                 $.getJSON(button.data('url'),(resposta) => {
                     $('#detalhes-nome').val(resposta.nome);
-                    $('#detalhes-cnpj').val(resposta.cnpj);
+                    $('#detalhes-proposta').val(resposta.proposta);
                     $('#detalhes-valor').val(resposta.valor);
                     $('#detalhes-detalhe_do_valor').val(resposta.detalhe_do_valor);
                     $('#detalhes-franquia').val(resposta.franquia);

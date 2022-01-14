@@ -25,7 +25,7 @@ class SeguradoraFactory extends Factory
             'veiculo_id'=>random_int(1,10),
             'foto'=>"http://lorempixel.com.br/600/400/?".random_int(1,10),
             'nome'=>$this->faker->name(),					
-            'cnpj'=>$this->faker->word(),
+            'proposta'=>$this->faker->word(),
             'valor'=>random_int(1,10)+(random_int(1,100)/100),
             'detalhe_do_valor'=>$this->faker->word(),
             'franquia'=>random_int(1,10)+(random_int(1,100)/100),
@@ -38,6 +38,8 @@ class SeguradoraFactory extends Factory
             'carro_reserva'=>$this->faker->word(),
             'assistencia'=>$this->faker->word(),
             'observacoes'=>$this->faker->word(),
+            'recomendado'=>false,
+            'escolhido'=>false,
         ];
     }
 }

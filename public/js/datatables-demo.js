@@ -15,6 +15,9 @@ $(document).ready(function() {
       "sNext":     "Próximo",
       "sLast":     "Último"
       }
-    }
+    },
+    "columnDefs": [
+      { type: 'date-eu', targets: 0 }
+    ]
   });
 });

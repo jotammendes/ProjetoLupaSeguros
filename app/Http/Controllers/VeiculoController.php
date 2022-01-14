@@ -30,7 +30,7 @@ class VeiculoController extends Controller
         return redirect(route('veiculo.index', $cliente_id))->with('success', 'Veiculo cadastrado com sucesso!');
     }
 
-    public function show($id)
+    public function show($cliente_id, $id)
     {
         $veiculo = Veiculo::find($id);
         return json_encode($veiculo);

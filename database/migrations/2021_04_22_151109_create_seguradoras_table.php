@@ -18,7 +18,7 @@ class CreateSeguradorasTable extends Migration
             $table->foreignId('veiculo_id')->constrained('veiculos')->onDelete('cascade');
             $table->string('foto');
             $table->string('nome');					
-            $table->string('cnpj');
+            $table->string('proposta');
             $table->float('valor',12,2);
             $table->string('detalhe_do_valor');
             $table->float('franquia',12,2);
@@ -31,6 +31,8 @@ class CreateSeguradorasTable extends Migration
             $table->string('carro_reserva');
             $table->string('assistencia');
             $table->string('observacoes');
+            $table->boolean('recomendado')->default(false);
+            $table->boolean('escolhido')->default(false);
             $table->timestamps();
         });
     }

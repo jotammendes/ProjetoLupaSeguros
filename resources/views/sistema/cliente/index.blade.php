@@ -18,6 +18,7 @@
                 <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Vigência de Saída</th>
                             <th>Nome</th>
                             <th>CPF</th>
                             <th>E-mail</th>
@@ -26,6 +27,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>Vigência de Saída</th>
                             <th>Nome</th>
                             <th>CPF</th>
                             <th>E-mail</th>
@@ -35,6 +37,7 @@
                     <tbody>
                         @foreach($clientes as $cliente)
                         <tr>
+                            <td>{{ $cliente->vigencia_saida_formatada }}</td>
                             <td>{{ $cliente->nome }}</td>
                             <td>{{ $cliente->cpf }}</td>
                             <td>{{ $cliente->email }}</td>
@@ -105,11 +108,11 @@
                             <input type="text" id="detalhes-bonus" name="detalhes-bonus" class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="detalhes-vigenciaEntrada">Vigencia de Entrada</label>
+                            <label for="detalhes-vigenciaEntrada">Vigência de Entrada</label>
                             <input type="text" id="detalhes-vigenciaEntrada" name="detalhes-vigenciaEntrada" class="form-control" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="detalhes-vigenciaSaida">Vigencia de Saida</label>
+                            <label for="detalhes-vigenciaSaida">Vigência de Saida</label>
                             <input type="text" id="detalhes-vigenciaSaida" name="detalhes-vigenciaSaida" class="form-control" readonly>
                         </div>
                     </div>
@@ -150,6 +153,7 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.datatables.net/plug-ins/1.11.3/sorting/date-eu.js"></script>
     
     <script>
         $(document).ready(() => {
