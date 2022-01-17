@@ -46,6 +46,8 @@
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('seguradora.show', ['veiculo_id' => $veiculo_id, 'seguradora' => $seguradora->id])}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="{{ route('seguradora.edit', ['seguradora' => $seguradora->id, 'veiculo_id' => $veiculo_id]) }}">Editar</a>
+                                <a class="btn {{ $seguradora->recomendado ? 'btn-secondary': 'btn-success' }}" href="#modalRecomendar" data-toggle="modal" data-url="{{ route('seguradora.recomendar', ['veiculo_id' => $veiculo_id, 'seguradora' => $seguradora->id])}}" {{ $seguradora->recomendado ? 'disabled': '' }}>{{ $seguradora->recomendado ? 'Recomendado': 'Recomendar' }}</a>
+                                <a class="btn {{ $seguradora->escolhido ? 'btn-secondary': 'btn-success' }}" href="#modalEscolher" data-toggle="modal" data-url="{{ route('seguradora.escolher', ['veiculo_id' => $veiculo_id, 'seguradora' => $seguradora->id])}}" {{ $seguradora->recomendado ? 'disabled': '' }}>{{ $seguradora->escolhido ? 'Selecionado': 'Selecionar' }}</a>
                                 <a class="btn btn-danger" href="#modalExcluir" data-toggle="modal" data-url="{{ route('seguradora.destroy', ['veiculo_id' => $veiculo_id, 'seguradora' => $seguradora->id])}}">Excluir</a>
                             </td>
                         </tr>
@@ -61,7 +63,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Detalhes do Veículo</h5>
+                    <h5 class="modal-title">Detalhes da Seguradora</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
@@ -136,17 +138,65 @@
         </div>
     </div>
 
+    <!-- Modal Recomendar-->
+    <div id="modalRecomendar" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Recomendar Seguradora</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div align="center" class="modal-body">Tem certeza que deseja recomendar esta Seguradora?</div>
+                <div class="modal-footer">
+                    <form id="recomendar" method="POST" enctype="multipart/form-data" name="recomendar">
+                        @csrf
+                        {{-- @method('PUT') --}}
+
+                        <button type="submit" form="recomendar" class="btn btn-success">Recomendar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Escolher-->
+    <div id="modalEscolher" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Escolher Seguradora</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div align="center" class="modal-body">Tem certeza que deseja escolher esta Seguradora?</div>
+                <div class="modal-footer">
+                    <form id="escolher" method="POST" enctype="multipart/form-data" name="escolher">
+                        @csrf
+                        {{-- @method('PUT') --}}
+
+                        <button type="submit" form="escolher" class="btn btn-success">Escolher</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Desativar-->
     <div id="modalExcluir" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Excluir Veiculo</h5>
+                    <h5 class="modal-title">Excluir Seguradora</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
-                <div align="center" class="modal-body">Tem certeza que deseja excluir este Veículo?</div>
+                <div align="center" class="modal-body">Tem certeza que deseja excluir esta Seguradora?</div>
                 <div class="modal-footer">
                     <form id="excluir" method="POST" enctype="multipart/form-data" name="excluir">
                         @csrf
@@ -188,6 +238,18 @@
                     $('#detalhes-observacoes').val(resposta.observacoes);
                     $('#detalhes-foto').attr('src', resposta.foto);
                 });
+            })
+
+            $('#modalRecomendar').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+
+                this.querySelector("form#recomendar").action = button.data('url')
+            })
+
+            $('#modalEscolher').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+
+                this.querySelector("form#escolher").action = button.data('url')
             })
 
             $('#modalExcluir').on('show.bs.modal', function (event) {

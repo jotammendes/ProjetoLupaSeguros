@@ -80,4 +80,38 @@ class SeguradoraController extends Controller
 
         return redirect(route('seguradora.index', $veiculo_id))->with('success', 'Seguradora excluída com sucesso!');
     }
+
+    public function recomendar($veiculo_id, $id)
+    {
+        $seguradoras = Veiculo::find($veiculo_id)->seguradoras;
+
+        foreach($seguradoras as $seguradora) {
+            if($seguradora->id == $id) {
+                $seguradora->recomendado = true;
+            }
+            else {
+                $seguradora->recomendado = false;
+            }
+            $seguradora->save();
+        }
+
+        return redirect(route('seguradora.index', $veiculo_id))->with('success', 'Seguradora recomendada com sucesso!');
+    }
+
+    public function escolher($veiculo_id, $id)
+    {
+        $seguradoras = Veiculo::find($veiculo_id)->seguradoras;
+
+        foreach($seguradoras as $seguradora) {
+            if($seguradora->id == $id) {
+                $seguradora->escolhido = true;
+            }
+            else {
+                $seguradora->escolhido = false;
+            }
+            $seguradora->save();
+        }
+
+        return redirect(route('seguradora.index', $veiculo_id))->with('success', 'Seguradora escolhida com sucesso!');
+    }
 }

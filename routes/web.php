@@ -52,5 +52,7 @@ Route::prefix('{cliente_id}')->group(function () {
 
 // rotas para Seguradora
 Route::prefix('{veiculo_id}')->group(function () {
+    Route::post('/seguradora/{seguradora}/recomendar', [SeguradoraController::class, 'recomendar'])->name('seguradora.recomendar');
+    Route::post('/seguradora/{seguradora}/escolher', [SeguradoraController::class, 'escolher'])->name('seguradora.escolher');
     Route::resource('seguradora',SeguradoraController::class);
 });

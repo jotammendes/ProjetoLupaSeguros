@@ -57,3 +57,15 @@
   color: grey;
   margin: 0;
 }
+
+.bg-recommend {
+  background-color: #0091b126;
+}
+
+.recommend {
+  color: #0091b1;
+}
+
+.not-recommend {
+  color: #cacaca;
+}

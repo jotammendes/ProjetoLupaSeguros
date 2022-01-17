@@ -117,9 +117,9 @@
       <div class="header d-flex gap-3 align-items-center">
         <img src="{{ asset('/img/logo-com-fundo.png') }}" width="200" alt="Logo Lupa Seguros">
         <div>
-          <p class="text-small"><b>Hrd Corretora De Seguros E Administraçao Ltda</b></p>
-          <p class="text-small">Rua Clóvis Machado, 156 - SL 614/616 - Praia Do Suá - Vitória/ES</p>
-          <p class="text-small">HRDSEGUROS@HRDSEGUROS.COM.BR</p>
+          <p class="text-small"><b>LuPa Corretora e Administradora de Seguros Ltda</b></p>
+          <p class="text-small">Rua Fortaleza, 1639, Itapoã, Vila Velha/ES</p>
+          <p class="text-small">lucasfaccinicor@gmail.com</p>
         </div>
       </div>
 
@@ -131,6 +131,7 @@
         <table class="tabela-seguradoras mx-auto">
           <thead>
             <tr>
+              <th>RECOMENDADO</th>
               <th>SEGURADORA</th>
               <th>PREÇO</th>
               <th>FRANQUIA</th>
@@ -147,8 +148,9 @@
           </thead>
           <tbody>
             @foreach($seguradoras as $seguradora)
-              <tr>
-                <td><img src="{{ $seguradora->foto }}" alt="Logo da seguradora {{ $seguradora->nome }}"> <p>{{ $seguradora->cnpj }}</p></td>
+              <tr class="{{ $seguradora->recomendado ? 'bg-recommend': '' }}">
+                <td><i class="fas fa-4x fa-search-dollar {{ $seguradora->recomendado ? 'recommend': 'not-recommend' }}"></i></td>
+                <td><img src="{{ $seguradora->foto }}" alt="Logo da seguradora {{ $seguradora->nome }}"> <p>{{ $seguradora->proposta }}</p></td>
                 <td><b>{{ $seguradora->valor_formatado }}</b><p>{{ $seguradora->detalhe_do_valor }}</p></td>
                 <td><b>{{ $seguradora->franquia_formatada }}</b></td>
                 <td><p>{{ $seguradora->cobertura }}</p></td>
