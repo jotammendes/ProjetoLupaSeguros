@@ -20,8 +20,8 @@
                         <tr>
                             <th>Vigência de Saída</th>
                             <th>Nome</th>
-                            <th>CPF</th>
                             <th>E-mail</th>
+                            <th>Nº de Veículos</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -29,8 +29,8 @@
                         <tr>
                             <th>Vigência de Saída</th>
                             <th>Nome</th>
-                            <th>CPF</th>
                             <th>E-mail</th>
+                            <th>Nº de Veículos</th>
                             <th>Ações</th>
                         </tr>
                     </tfoot>
@@ -39,8 +39,8 @@
                         <tr>
                             <td>{{ $cliente->vigencia_saida_formatada }}</td>
                             <td>{{ $cliente->nome }}</td>
-                            <td>{{ $cliente->cpf }}</td>
                             <td>{{ $cliente->email }}</td>
+                            <td>{{ $cliente->veiculos()->count() }}</td>
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('cliente.show', $cliente->id)}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="{{ route('cliente.edit', $cliente->id) }}">Editar</a>

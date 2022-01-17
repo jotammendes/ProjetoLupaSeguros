@@ -19,6 +19,7 @@
                         <tr>
                             <th>Descrição do Veículo</th>
                             <th>Ano</th>
+                            <th>Nº de Seguradoras</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                         <tr>
                             <th>Descrição do Veículo</th>
                             <th>Ano</th>
+                            <th>Nº de Seguradoras</th>
                             <th>Ações</th>
                         </tr>
                     </tfoot>
@@ -34,6 +36,7 @@
                         <tr>
                             <td>{{ $veiculo->descricao_veiculo }}</td>
                             <td>{{ $veiculo->ano }}</td>
+                            <td>{{ $veiculo->seguradoras()->count() }}</td>
                             <td>
                                 <a class="btn btn-info" href="#modalDetalhes" data-toggle="modal" data-url="{{ route('veiculo.show', ['cliente_id' => $cliente_id, 'veiculo' => $veiculo->id])}}">Detalhes</a>
                                 <a class="btn btn-warning text-white" href="{{ route('veiculo.edit', ['veiculo' => $veiculo->id, 'cliente_id' => $cliente_id]) }}">Editar</a>

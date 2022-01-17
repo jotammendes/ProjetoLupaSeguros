@@ -52,5 +52,8 @@ class Cliente extends Model
         return date('d/m/Y', strtotime($this->vigencia_saida));
     }
 
-    
+    public function veiculos()
+    {
+        return $this->hasMany('App\Models\Veiculo', 'cliente_id');
+    }
 }
