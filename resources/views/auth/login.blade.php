@@ -1,7 +1,7 @@
 @extends('sistema.template.auth')
 
 @section('titulo')
-  Login
+  Entrar
 @endsection
 
 @section('conteudo')
@@ -20,16 +20,16 @@
               @csrf
 
               <div class="form-group">
-                <label class="small mb-1" for="email">Email</label>
-                <input class="form-control py-4" id="email" name="email" type="email" placeholder="Informe seu email" required />
+                <label class="small mb-1" for="email">E-mail</label>
+                <input class="form-control py-4" id="email" name="email" type="email" placeholder="Informe seu e-mail" required />
               </div>
               <div class="form-group">
-                <label class="small mb-1" for="password">Password</label>
+                <label class="small mb-1" for="password">Senha</label>
                 <input class="form-control py-4" id="password" name="password" type="password" placeholder="Informe sua senha" required />
               </div>
               <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                <a class="small" href="password.html">Esqueceu sua senha?</a>
-                <button class="btn btn-primary" type="submit">Login</button>
+                <a class="small" href="{{ route('forgot_password') }}">Esqueceu sua senha?</a>
+                <button class="btn btn-primary" type="submit">Entrar</button>
               </div>
             </form>
           </div>

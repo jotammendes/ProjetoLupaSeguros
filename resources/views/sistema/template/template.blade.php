@@ -28,7 +28,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Perfil</a>
+                        <a class="dropdown-item" href="{{ route('user.edit', ['user' => Auth::user()->id]) }}">Perfil</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
@@ -43,18 +43,20 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Páginas</div>
 
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Usuário
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('user.index') }}">Lista de Usuários</a>
-                                    <a class="nav-link" href="{{ route('user.deletados') }}">Lista de Desativados</a>
-                                    <a class="nav-link" href="{{ route('user.create') }}">Novo Usuário</a>
-                                </nav>
-                            </div>
+                            @if(Auth::user()->id === 1)
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                    Usuário
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="{{ route('user.index') }}">Lista de Usuários</a>
+                                        <a class="nav-link" href="{{ route('user.deletados') }}">Lista de Desativados</a>
+                                        <a class="nav-link" href="{{ route('user.create') }}">Novo Usuário</a>
+                                    </nav>
+                                </div>
+                            @endif
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="false" aria-controls="collapseCliente">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-injured" aria-hidden="true"></i></div>

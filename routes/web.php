@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\CategoriaExemploController;
-// use App\Http\Controllers\ExemploController;
+use App\Http\Controllers\CategoriaExemploController;
+use App\Http\Controllers\ExemploController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClienteController;
@@ -23,6 +23,8 @@ use App\Http\Controllers\SeguradoraController;
 Route::prefix('auth')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
+    Route::get('/forgot_password', [AuthController::class, 'forgot_password'])->name('forgot_password');
+    Route::put('/reset_password', [AuthController::class, 'reset_password'])->name('reset_password');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
@@ -35,10 +37,10 @@ Route::middleware(['auth:web'])->group(function () {
     Route::resource('categoria_exemplo', CategoriaExemploController::class);
 
     // rotas para exemplo
-    // Route::get('/exemplo/deletados', [ExemploController::class, 'deletados'])->name('exemplo.deletados');
-    // Route::post('/exemplo/restaurar/{id}', [ExemploController::class, 'restaurar'])->name('exemplo.restaurar');
-    // Route::delete('/exemplo/deletar/{id}', [ExemploController::class, 'deletar'])->name('exemplo.deletar');
-    // Route::resource('exemplo', ExemploController::class);
+    Route::get('/exemplo/deletados', [ExemploController::class, 'deletados'])->name('exemplo.deletados');
+    Route::post('/exemplo/restaurar/{id}', [ExemploController::class, 'restaurar'])->name('exemplo.restaurar');
+    Route::delete('/exemplo/deletar/{id}', [ExemploController::class, 'deletar'])->name('exemplo.deletar');
+    Route::resource('exemplo', ExemploController::class);
 
     // rotas para User
     Route::get('/user/deletados', [UserController::class, 'deletados'])->name('user.deletados');
