@@ -22,6 +22,18 @@
             </a>
 
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
         </nav>
         
         <div id="layoutSidenav">
@@ -30,6 +42,19 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Páginas</div>
+
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Usuário
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('user.index') }}">Lista de Usuários</a>
+                                    <a class="nav-link" href="{{ route('user.deletados') }}">Lista de Desativados</a>
+                                    <a class="nav-link" href="{{ route('user.create') }}">Novo Usuário</a>
+                                </nav>
+                            </div>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="false" aria-controls="collapseCliente">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-injured" aria-hidden="true"></i></div>
@@ -58,6 +83,10 @@
                                 </div>
                             @endif
                         </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Admin
                     </div>
                 </nav>
             </div>

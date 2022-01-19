@@ -13,7 +13,7 @@ class Seguradora extends Model
         'veiculo_id',
         'foto',
         'nome',					
-        'cnpj',
+        'proposta',
         'valor',
         'detalhe_do_valor',
         'franquia',

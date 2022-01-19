@@ -7,8 +7,8 @@
     </div>
     <div class="col-md-6 col-sm-12">
         <div class="form-group">
-            <label for="cnpj">CNPJ</label>
-            <input type="text" id="cnpj" name="cnpj" value="{{ isset($seguradora)? $seguradora->cnpj: old('cnpj')}}" class="form-control">
+            <label for="proposta">Proposta</label>
+            <input type="text" id="proposta" name="proposta" value="{{ isset($seguradora)? $seguradora->proposta: old('proposta')}}" class="form-control">
         </div>
     </div>
     <div class="col-md-6 col-sm-12">
