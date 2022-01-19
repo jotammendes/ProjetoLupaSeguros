@@ -30,7 +30,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Perfil</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Admin
+                        {{ Auth::user()->nome }}
                     </div>
                 </nav>
             </div>

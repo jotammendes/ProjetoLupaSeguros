@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
@@ -29,6 +30,7 @@ class UserController extends Controller
         if($data['password'] !== $data['confirm_password'])
             return back()->withInput()->with('danger', 'Senha não confirmada!');
         
+        $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         
         return redirect(route('user.index'))->with('success', 'user cadastrado com sucesso!');
@@ -61,8 +63,15 @@ class UserController extends Controller
         }
 
         // verificando se campo senha foi preenchido
-        if(!$data['password']) unset($data['password']);
-        if(!$data['confirm_password']) unset($data['confirm_password']);
+        if(!$data['password'] && !$data['confirm_password']) {
+            unset($data['password']);
+            unset($data['confirm_password']);
+        } else if($data['password'] !== $data['confirm_password']) {
+            
+            return back()->withInput()->with('danger', 'Senha não confirmada!');
+        } else {
+            $data['password'] = Hash::make($data['password']);
+        }
 
         $user->update($data);
 
